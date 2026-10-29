@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f4ed">
+    <title>FridgePolice — shared fridge, fewer surprises</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script type="module" src="/app.js"></script>
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="FridgePolice home">
+          <span class="brand-mark" aria-hidden="true">F</span>
+          <span>Fridge<span class="brand-accent">Police</span></span>
+        </a>
+        <span class="local-note"><span class="live-dot"></span> Shared fridge · saved on this device</span>
+      </header>
+
+      <section class="intro">
+        <div>
+          <p class="eyebrow">THE FRIDGE, BUT FAIRER</p>
+          <h1>Know what’s yours.<br><span>Ask before it’s gone.</span></h1>
+          <p class="intro-copy">A little clarity for the shelf you share. Request a portion, get an okay, and keep the real fridge in sync.</p>
+        </div>
+        <div class="intro-art" aria-hidden="true">
+          <span class="art-spark spark-one">✳</span>
+          <span class="art-spark spark-two">✳</span>
+          <span class="art-pizza">🍕</span>
+          <span class="art-leaf">✦</span>
+        </div>
+      </section>
+
+      <section class="scenario" aria-label="Quick scenario">
+        <span class="scenario-icon">!</span>
+        <div><strong>Try the last-slice test</strong><span>Request the 25% as B and C, approve one, then try the other. The second approval is blocked.</span></div>
+        <button id="reset-demo" class="text-button" type="button">Reset demo</button>
+      </section>
+
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+
+      <section class="inventory-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">RIGHT NOW</p><h2>The shared shelf</h2></div>
+          <span id="item-count" class="count-pill">0 items</span>
+        </div>
+        <div id="inventory" class="inventory-grid"></div>
+      </section>
+
+      <div class="lower-grid">
+        <section class="panel add-panel">
+          <p class="eyebrow">ADD TO THE FRIDGE</p>
+          <h2>Log something new</h2>
+          <form id="add-item-form" class="stack-form">
+            <label>Food name<input name="name" required maxlength="60" placeholder="e.g. Oat milk"></label>
+            <div class="form-row">
+              <label>Added by<input name="owner" required maxlength="40" placeholder="Roommate name"></label>
+              <label>Amount<input name="quantity" type="number" required min="0.01" step="any" value="1"></label>
+            </div>
+            <label>Measured in<input name="unit" required maxlength="20" value="portion" placeholder="e.g. bottle, %"></label>
+            <button class="primary-button" type="submit"><span aria-hidden="true">+</span> Add item</button>
+          </form>
+        </section>
+
+        <section class="panel activity-panel">
+          <div class="section-heading activity-heading"><div><p class="eyebrow">THE RECEIPT</p><h2>Recent activity</h2></div></div>
+          <ol id="activity" class="activity-list"></ol>
+        </section>
+      </div>
+      <footer>Good roommates communicate. Great roommates update the inventory. <span>✦</span></footer>
+    </main>
+  </body>
+</html>
